@@ -1,0 +1,34 @@
+#flashSalesSection{
+    max-width:100vw ;
+
+    .time_Area{
+        margin: 0 auto;
+        max-width: 80%;
+        display: flex;
+        flex-direction: column;
+        gap: 50px;
+        .upper_area{
+            color: #DB4444;
+            font-weight: 600;
+
+            .color{
+                width: 20px;
+                height: 40px;
+                border-radius: 4px;
+                background-color: #DB4444;
+            }
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+        .lower_area{
+            align-items: end;
+            font-size: 36px;
+            display: flex;
+font-style: normal;
+font-weight: 500;
+line-height: 48px; /* 133.333% */
+letter-spacing: 1.44px;
+        }
+    }
+}

@@ -1,0 +1,14 @@
+.timer{display: flex;
+    margin-left: 20px;
+    .time{
+        font-size: 11px;
+    }
+    .dot{
+        color: orangered;
+    }
+    .div{
+        display: flex;
+align-items: center;
+        flex-direction: column;
+    }
+}
