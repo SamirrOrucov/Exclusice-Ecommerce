@@ -21,7 +21,8 @@ function FlashSalesSection() {
           </div>
         </div>
         <div className="products">
-        <Carousel/>
+       
+          <Carousel />
         </div>
       </div>
     </div>

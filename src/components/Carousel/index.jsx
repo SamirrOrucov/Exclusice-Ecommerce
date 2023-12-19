@@ -1,47 +1,51 @@
-import React from 'react'
+import React, { useEffect, useState } from "react";
 import Slider from "react-slick";
-import FlashSalesCard from '../FlashSalesCard';
+import FlashSalesCard from "../FlashSalesCard";
 function Carousel() {
-    const settings = {
-      dots: false,
-      infinite: true,
-      slidesToShow: 4,
-      slidesToScroll: 1,
-      autoplay: true,
-      speed: 2000,
-      autoplaySpeed: 2000,
-      cssEase: "linear"
-    }
-        return (
-      <div>
+  const [produts, setProduts] = useState([])
+ async function getfetch() {
+  const res=await fetch("https://657ef0619d10ccb465d58d01.mockapi.io/api/products/products")
+  const data=await res.json()
+  setProduts(data)
+   }
+   useEffect(() => {
+     getfetch()
+   }, [])
+   
+  
+  
+  
+  const settings = {
+    dots: false,
+    infinite: true,
+    slidesToShow: 4,
+    slidesToScroll: 1,
+    autoplay: true,
+    speed: 2000,
+    autoplaySpeed: 2000,
+    cssEase: "linear",
+  };
+console.log(produts);
+  return (
+    <div>
+      
         <Slider {...settings}>
-          <div>
-            <FlashSalesCard/>
-          </div>
-          <div>
-          <FlashSalesCard/>
 
-          </div>
-          <div>
-          <FlashSalesCard/>
+       
+        {produts.map(item=>
+         <div>
+          <FlashSalesCard img={item.image} discount={item.persentage} name={item.name} price={item.price} oldPrice={item.oldPrice } comments={item.comme} />
+           </div>
 
-          </div>
-          <div>
-          <FlashSalesCard/>
-
-          </div>
-          <div>
-          <FlashSalesCard/>
-
-          </div>
-          <div>
-          <FlashSalesCard/>
-
-          </div>
-        </Slider>
-      </div>
-    );
+           )
         }
+        
+     
+      </Slider>
+    
+      
+    </div>
+  );
+}
 
-
-export default Carousel
+export default Carousel;

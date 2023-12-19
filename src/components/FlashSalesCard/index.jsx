@@ -1,14 +1,14 @@
 import React from "react";
 import "./index.scss";
-function FlashSalesCard() {
+function FlashSalesCard({img,discount,name, price ,oldPrice ,comments}) {
   return (
     <div id="flashSalesCard_container">
       <div className="image_area">
         <img
-          src="https://s3-alpha-sig.figma.com/img/5d5c/2e52/50752d55f8b60f2aa2923183dadbc135?Expires=1704067200&Signature=kgqazTkPk~QsW9Lv8NLxuNDD1uFF-41XB7p81l0Z1cCRNGtq669eZoVKGy7ZGw3mBNkNKKKw1i3yw2rSaumYB3qCfsv7evwq8TrT9zxQSE83GdMLM5jiZVEvN7D2sK1D3niLRhWxX6RBaDrmlDjIlLvpcKiwagSyZaBtBYyDBODeMKHqIkUJbmTeKpixe1Bk1dnHI3JXx0~OV0V4kVpVtUbtFN8o5uirgiSrtXGeb3R--YDUiE9vzopJ5zk6pIn1mlA5jmNa2rb~ySmLmqGXCI9Bs-v6X9zqIcrXd6w1v4wZBKzIgkPC2481wSiSBCaBWUbovtm9ryDH2ttiWnQEgg__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4"
+          src={img}
           alt=""
         />
-        <div className="discount">-40%</div>
+        <div className="discount">{discount?discount:"-55"}</div>
         <div className="icons"><div className="like a">
           <i class="fa-regular fa-heart"></i>
         </div>
@@ -18,10 +18,10 @@ function FlashSalesCard() {
         <div className="hidden_hover">Add to card</div>
       </div>
       <div className="product_info">
-        <p className="name">HAVIT HV-G92 Gamepad</p>
+        <p className="name">{name}</p>
         <div className="prices">
-          <span className="price">$120</span>
-          <span className="last_price">$160</span>
+          <span className="price">${price}</span>
+          <span className="last_price">$ {oldPrice?oldPrice:price*2}</span>
         </div>
         <div className="stars">
           <svg
@@ -84,7 +84,7 @@ function FlashSalesCard() {
               fill="#FFAD33"
             />
           </svg>
-          <span className="starred_count">(88)</span>
+          <span className="starred_count">({comments?comments:68})</span>
         </div>
       </div>
     </div>

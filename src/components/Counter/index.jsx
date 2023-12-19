@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import "./index.scss"
 const CountdownTimer = () => {
   // Set the date we're counting down to
-  const countDownDate = new Date("Dec 31, 2023 23:59:59").getTime();
+  const countDownDate = new Date("Dec 19, 2023 19:59:59").getTime();
 
   const [timeRemaining, setTimeRemaining] = useState(calculateTimeRemaining());
 
@@ -11,7 +11,6 @@ const CountdownTimer = () => {
       setTimeRemaining(calculateTimeRemaining());
     }, 1000);
 
-    // Cleanup the interval on component unmount
     return () => clearInterval(interval);
   }, []);
 
@@ -36,12 +35,14 @@ const CountdownTimer = () => {
   if (timeRemaining.isExpired) {
     return <p>EXPIRED</p>;
   }
+  
 function handleHours() {
     if ((timeRemaining.hours /10)<1) {
         return "0"+timeRemaining.hours
     }
     return timeRemaining.hours
 }
+
 function handleSec() {
     if ((timeRemaining.seconds /10)<1) {
         return "0"+timeRemaining.seconds
