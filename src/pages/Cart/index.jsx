@@ -1,7 +1,9 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { NavLink } from 'react-router-dom'
 import "./index.scss"
+import { BasketContext } from '../../context/basketContext'
 function CartPage() {
+    const {basket}=useContext(BasketContext)
   return (
     <div id='cart_container'>
         <div className="pageLink">
@@ -14,25 +16,31 @@ function CartPage() {
                 <span>Quantity</span>
                 <span>Subtotal</span>
                 </div>
-                <div className="tCart">
+                {
+                    basket.map(item=>
+                        
+                        <div className="tCart">
                     <div className="imgName">
-                        <img src="https://s3-alpha-sig.figma.com/img/5e63/4682/db5174aff99bb9337d2dc9598a0b44e4?Expires=1704067200&Signature=lh~PSVZ4f5ZBRG-rmhpB1xLYGKIBAd81IXbhcYnS~V44M0jORkEENiphfnBIuZ8HN3qV~oc8qjaRcCDvVcO~aYRGbqeeooZT9qKWUVN-rREEc8qg0DIM5ezUf3SeKFoD6sQEVqlP5tIsts3Yjxd2SnADQg1yY3Kp0rdYkhYAle2g66hRUHcEY8uEc~qDbUqkwEcZWmc3fThKuaC8prsuA9tBfg4u6A7vMKcyQzwBpXCz6M1O5z7-Rsxvif~yrARPwHBT95bfLuBn56geI9UxcW1u3rxwAJ1smK~CVJ-TT9~eppiifbINmOVPVZgNEOL8CiKTcZo3sN3zAnHCb9pwdw__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4" alt="" />
-                        <p>LCD Monitor</p>
+                        <img src={item.image} alt="" />
+                        <p>{item.name}</p>
                     </div>
                     <div className="price">
-                        $650
+                        {item.price}
                     </div>
                     <div className="count">
-                        3
+                        {item.count}
                         <div className="incDec">
                         <i class="fa-solid fa-chevron-up"></i>
                         <i class="fa-solid fa-chevron-down"></i>
                         </div>
                     </div>
                     <div className="totalPrice">
-                        $650
+                        {(item.price)*(item.count)}
                     </div>
-                </div>
+                </div> 
+                        )
+                }
+                
                 
 
 

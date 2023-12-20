@@ -1,27 +1,41 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./index.scss";
-function FlashSalesCard({img,discount,name, price ,oldPrice ,comments}) {
+import { BasketContext } from "../../context/basketContext";
+function FlashSalesCard({
+  img,
+  discount,
+  name,
+  price,
+  oldPrice,
+  comments,
+  item,
+}) {
+  const { addBasket } = useContext(BasketContext);
   return (
     <div id="flashSalesCard_container">
       <div className="image_area">
-        <img
-          src={img}
-          alt=""
-        />
-        <div className="discount">{discount?discount:"-55"}</div>
-        <div className="icons"><div className="like a">
-          <i class="fa-regular fa-heart"></i>
+        <img src={img} alt="" />
+        <div className="discount">{discount ? discount : "-55"}</div>
+        <div className="icons">
+          <div className="like a">
+            <i class="fa-regular fa-heart"></i>
+          </div>
+          <div className="watch a">
+            <i class="fa-regular fa-eye"></i>
+          </div>
         </div>
-        <div className="watch a">
-          <i class="fa-regular fa-eye"></i>
-        </div></div>
-        <div className="hidden_hover">Add to card</div>
+        <div className="hidden_hover" onClick={() => addBasket(item)}>
+          Add to card
+        </div>
+        
       </div>
       <div className="product_info">
         <p className="name">{name}</p>
         <div className="prices">
           <span className="price">${price}</span>
-          <span className="last_price">$ {oldPrice?oldPrice:price*2}</span>
+          <span className="last_price">
+            $ {oldPrice ? oldPrice : price * 2}
+          </span>
         </div>
         <div className="stars">
           <svg
@@ -84,7 +98,7 @@ function FlashSalesCard({img,discount,name, price ,oldPrice ,comments}) {
               fill="#FFAD33"
             />
           </svg>
-          <span className="starred_count">({comments?comments:68})</span>
+          <span className="starred_count">({comments ? comments : 68})</span>
         </div>
       </div>
     </div>
